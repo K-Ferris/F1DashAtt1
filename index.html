@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>F1 2025 Gallery</title>
+
+<style>
+body{
+    background:#111;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    color:#e10600;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:200px;
+    object-fit:contain;
+    background:#222;
+    border-radius:10px;
+    padding:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+.lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.95);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>Formula 1 2025 Gallery</h1>
+
+<div class="gallery" id="gallery"></div>
+
+<div class="lightbox" id="lightbox" onclick="closeImage()">
+    <span class="close">&times;</span>
+    <img id="lightboxImg">
+</div>
+
+<script>
+const images = [
+"2025alpinecarright.png",
+"2025alpinefracol01right.png",
+"2025alpinepiegas01right.png",
+
+"2025astonmartincarright.png",
+"2025astonmartinferalo01right.png",
+"2025astonmartinlanstr01right.png",
+
+"2025ferraricarright.png",
+"2025ferrarichalec01right.png",
+"2025ferrarilewham01right.png",
+
+"2025haascarright.png",
+"2025haasestoco01right.png",
+"2025haasolibea01right.png",
+
+"2025kicksaubercarright.png",
+"2025kicksaubergabbor01right.png",
+"2025kicksaubernichul01right.png",
+
+"2025mclarencarright.png",
+"2025mclarenlannor01right.png",
+"2025mclarenoscpia01right.png",
+
+"2025mercedesandant01right.png",
+"2025mercedescarright.png",
+"2025mercedesgeorus01right.png",
+
+"2025racingbullscarright.png",
+"2025racingbullsisahad01right.png",
+"2025racingbullslialaw01right.png",
+
+"2025redbullracingcarright.png",
+"2025redbullracingmaxver01right.png",
+"2025redbullracingyuktsu01right.png",
+
+"2025williamsalealb01right.png",
+"2025williamscarright.png",
+"2025williamscarsai01right.png"
+];
+
+const gallery = document.getElementById("gallery");
+
+images.forEach(file => {
+    const img = document.createElement("img");
+    img.src = "images/" + file;
+    img.alt = file;
+    img.onclick = () => openImage(img.src);
+    gallery.appendChild(img);
+});
+
+function openImage(src){
+    document.getElementById("lightboxImg").src = src;
+    document.getElementById("lightbox").classList.add("active");
+}
+
+function closeImage(){
+    document.getElementById("lightbox").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
